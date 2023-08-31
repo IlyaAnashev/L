@@ -1,0 +1,4 @@
+﻿# Перечисления игнорируемых Git папок и файлов
+.editorconfig
+ind.html
+manifest.wabmanifest

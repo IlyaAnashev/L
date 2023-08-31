@@ -1,0 +1,1120 @@
+/* Подключил шрифты */
+@font-face {
+	font-family: "Muller";
+	src: local("Muller-Regular"),
+		url("../fonts/MullerRegular.woff2") format("woff2"),
+		url("../fonts/MullerRegular.woff") format("woff");
+	font-display: swap;
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Muller";
+	src: local("Muller-Medium"),
+		url("../fonts/MullerMedium.woff2") format("woff2"),
+		url("../fonts/MullerMedium.woff") format("woff");
+	font-display: swap;
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Muller";
+	src: local("Muller-Bold"), url("../fonts/MullerBold.woff2") format("woff2"),
+		url("../fonts/MullerBold.woff") format("woff");
+	font-display: swap;
+	font-weight: 700;
+	font-style: normal;
+}
+
+/*для упрощения замены цвета при необходимости*/
+:root {
+	--colorDefaultButton: rgba(204, 153, 51, 1);
+	--colorDefaultGreyNavTel: rgba(102, 102, 102, 1);
+	--colorTextSubstrate: rgba(255, 255, 255, 1);
+	--colorSwitch: rgba(240, 191, 95, 1);
+	--colorAktivButtonNacTel: rgba(164, 115, 18, 1);
+}
+
+* {
+	/*Запрет на выделение текста на всей странице */
+	user-select: none;
+}
+
+body {
+	font-family: "Muller", sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: rgba(241, 241, 241, 1);
+}
+
+.flex {
+	display: flex;
+}
+
+.container {
+	width: 1170px;
+	margin: 0 auto 70px auto;
+	padding: 0;
+	/* позволяет при изменении ширины экрана переносить элементы Flex */
+	max-width: 100%;
+}
+
+/*сброс стилей ссылки посещеных и нетё */
+a:link,
+a:visited {
+	text-decoration: inherit;
+	color: currentColor;
+	cursor: pointer;
+}
+
+/* сброс стилей для кнопки */
+.c-button {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 0;
+	border-radius: 0;
+	/* унаследует цвет родителя (body) */
+	background: inherit;
+	padding: 0;
+	cursor: pointer;
+	color: currentColor;
+}
+
+/* переназначение встроеных стилей для фокуса для отмены наложения рамок  */
+:focus {
+	outline: none;
+}
+
+/*отмена стилизации списка */
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+/* решает "баг" промежутка между изображением и нижнем краем блока в 5.391px */
+img {
+	vertical-align: bottom;
+}
+
+.section-contacts-bloc-img>img {
+	object-fit: cover;
+	width: 653;
+	height: 100%;
+}
+
+/*стилизация верхний части шапки*/
+.header {
+	margin-top: 30px;
+}
+
+.header-top {
+	margin-bottom: 30px;
+}
+
+.header-logo {
+	padding-right: 40px;
+}
+
+.header-top-left-logo {
+	color: var(--colorDefaultGreyNavTel);
+}
+
+.header-top-telephone {
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 20px;
+}
+
+.header-logo-right {
+	color: var(--colorDefaultButton);
+}
+
+.header-logo-right-switch {
+	padding-left: 5px;
+	font-size: 16px;
+	font-weight: normal;
+	line-height: 16px;
+	color: currentColor;
+}
+
+.header-top,
+.header-nav {
+	justify-content: space-between;
+}
+
+.header-top-left-logo,
+.header-top,
+.header-nav,
+.header-button-right,
+.header-list,
+.header-logo-right {
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+/*стилизация нижний части шапки*/
+
+.header-nav {
+	/* !Сергей! */
+	height: 73px;
+}
+
+.header-list {
+	/*сброс ul nav */
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	color: var(--colorDefaultGreyNavTel);
+}
+
+.header-lis,
+.header-button {
+	padding: 0 45px;
+	background-color: var(--colorTextSubstrate);
+	border-radius: 15px;
+}
+
+.header-item:not(:last-child) {
+	margin-right: 45px;
+}
+
+.header-button-right {
+	color: var(--colorDefaultButton);
+}
+
+.header-button-anchor-tour {
+	margin-right: 40px;
+}
+
+/* стилизация main */
+
+/* общий стиль для заголовка секций */
+.section-title {
+	font-size: 40px;
+	font-weight: normal;
+	padding-left: 40px;
+	line-height: 40px;
+	margin: 0 0 20px 0;
+	color: rgba(51, 51, 51, 1);
+	text-align: left;
+}
+
+/* Секция спецпредложения  */
+.section-container {
+	column-gap: 24px;
+	flex-wrap: wrap;
+	row-gap: 24px;
+}
+
+.special-block {
+	flex-direction: column;
+	row-gap: 24px;
+}
+
+.special-block-focusBloc {
+	border-radius: 15px;
+}
+
+.special-card {
+	position: relative;
+	border-radius: 15px;
+	background: linear-gradient(90deg,
+			rgba(48, 64, 89, 0.84) -2.9%,
+			rgba(53, 65, 83, 0) 65.7%);
+	/* или так  */
+	/*box-shadow: 300px 10px 140px -100px rgba(48, 64, 89, 0.84) inset;*/
+}
+
+.special-card>img {
+	z-index: -1;
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
+
+/*
+ убрать отступ у последнего элемента добавить первому
+.special-card:not(:last-child) {
+	margin-bottom: 24px;
+} */
+
+.special-block-titel {
+	position: absolute;
+	text-align: left;
+	min-width: 420px;
+	padding: 40px 0 40px 45px;
+}
+
+.special-block-titel-right {
+	position: absolute;
+	text-align: left;
+	min-width: 420px;
+	padding: 212px 0 40px 45px;
+}
+
+.special-cardTitle {
+	font-size: 40px;
+	font-weight: bold;
+	color: var(--colorTextSubstrate);
+	margin: 0px;
+	margin-bottom: 15px;
+	line-height: 40px;
+}
+
+.special-cardTitle-right {
+	font-size: 60px;
+	font-weight: bold;
+	color: var(--colorTextSubstrate);
+	margin: 0px;
+	margin-bottom: 15px;
+	line-height: 60px;
+}
+
+.special-block-price {
+	display: block;
+	font-size: 20px;
+	font-weight: normal;
+	margin-bottom: 47px;
+	color: var(--colorTextSubstrate);
+	line-height: 20px;
+}
+
+.special-block-price-right {
+	display: block;
+	font-size: 30px;
+	font-weight: normal;
+	margin-bottom: 47px;
+	color: var(--colorTextSubstrate);
+	line-height: 30px;
+}
+
+.special-block-links {
+	font-size: 16px;
+	color: var(--colorSwitch);
+	padding-bottom: 0;
+	align-items: center;
+	line-height: 16px;
+}
+
+.card-arrow-icon {
+	/* меняет цвет иконки в зависимости от цвета текста */
+	stroke: currentColor;
+	/* фича для svg что бы уйти от центровки черзе флекс (вертикальное выравнивание строчных элементов  */
+	vertical-align: middle;
+}
+
+/* стилизация секции О нас */
+.section-about_us-text {
+	max-width: 888px;
+	font-size: 16px;
+	line-height: 32px;
+	color: #000000;
+	font-weight: normal;
+}
+
+/*стелизация секции Услуги*/
+
+.list-service-cards {
+	flex-wrap: wrap;
+	gap: 24px;
+	justify-content: space-between;
+}
+
+.service-cards {
+	/* margin-bottom: 40px; */
+	max-width: 573px;
+	border-radius: 15px;
+	background-color: rgba(255, 255, 255, 1);
+}
+
+.service-cards-img {
+	min-height: 165px;
+	object-fit: cover;
+	overflow: hidden;
+}
+
+.service-cards-text {
+	margin: 26px 126px 35px 45px;
+}
+
+.service-cards-link {
+	color: rgba(204, 153, 51, 1);
+	display: block;
+	font-size: 20px;
+	line-height: 40px;
+	font-weight: medium;
+	text-align: left;
+}
+
+.service-cards-infoText {
+	display: block;
+	color: #000000;
+	font-size: 16px;
+	line-height: 32px;
+	font-weight: normal;
+	text-align: left;
+}
+
+/*стилизация секции Примущества */
+.list-advantages-cards {
+	flex-wrap: wrap;
+	justify-content: space-between;
+	/* создает отступы между флекс и граид элементами  */
+	/* row-gap: 22px;
+	column-gap: 22px; */
+	gap: 22px;
+}
+
+.advantages-cards {
+	/* 25% - для расположения 4 блоков 22px отступ между блоками, но так как у последнего блока убирается отступ ( флекс учитывает отступы прирасчете контенера ) мы получаем общий контенер 1170/4=292,5=25% тогда отступ расчитывается 22/4=5,5 22-5,5=16,5 292,5-16,5=276  */
+	/* flex-basis: calc(25% - (22px - (22px / 4))); */
+	/* margin: 0 22px 22px 0; */
+	/* margin-bottom: 22px; */
+	width: 276px;
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: 15px;
+}
+
+/* .advantages-cards:nth-child(4n) {
+	margin-right: 0;
+}
+
+.advantages-cards:nth-last-child(-n + 4) {
+	margin-bottom: 0;
+} */
+
+/* !Сергей! */
+.advantages-cards-image {
+	max-width: 100%;
+	max-height: 100%;
+	margin: 40px auto 10px 45px;
+}
+
+.advantages-cards-text {
+	margin: 0 42px 32px 45px;
+	font-size: 16px;
+	line-height: 32px;
+	font-weight: normal;
+	/* для условия если текст будет больше текущего */
+	min-height: 128px;
+}
+
+/* стилизация секции Размещение */
+.list-hotels-cards {
+	flex-wrap: wrap;
+	justify-content: space-between;
+	row-gap: 24px;
+}
+
+.hotels-cards {
+	width: 374px;
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: 15px;
+}
+
+.hotels-cards-img {
+	margin-bottom: 32px;
+}
+
+.hotels-cards-text {
+	padding: 0 45px 45px 45px;
+}
+
+.hotels-cards-text-top {
+	margin-bottom: 16px;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+/* от , ночь*/
+.hotels-cards-text-pale,
+.hotels-cards-text-night {
+	font-size: 16px;
+	line-height: 16px;
+	font-weight: normal;
+}
+
+/* 4698 */
+.hotels-cards-text-price {
+	font-size: 20px;
+	line-height: 20px;
+	font-weight: bold;
+	margin-right: 4px;
+	color: rgba(0, 0, 0, 1);
+	/* убирает 0.107px  снизу родительского контейнера  */
+	vertical-align: bottom;
+}
+
+.hotels-cards-text-pale {
+	margin-right: 4px;
+	color: rgba(153, 153, 153, 1);
+}
+
+/* ночь */
+.hotels-cards-text-night {
+	color: rgba(0, 0, 0, 1);
+}
+
+.hotels-cards-starRating {
+	column-gap: 6px;
+}
+
+/* селекторы для управления цветом звезд первой карточки блока Размещения */
+.hotels-cards-first .hotels-cards-starRating-oneStar {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-first .hotels-cards-starRating-twoStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-first .hotels-cards-starRating-threeStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-first .hotels-cards-starRating-fourStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-first .hotels-cards-starRating-fiveStars {
+	fill: rgba(233, 233, 233, 1);
+}
+
+/* селекторы для управления цветом звезд второй карточки блока Размещения */
+.hotels-cards-second .hotels-cards-starRating-oneStar {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-second .hotels-cards-starRating-twoStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-second .hotels-cards-starRating-threeStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-second .hotels-cards-starRating-fourStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-second .hotels-cards-starRating-fiveStars {
+	fill: rgba(233, 233, 233, 1);
+}
+
+/* селекторы для управления цветом звезд третий карточки блока Размещения */
+.hotels-cards-third .hotels-cards-starRating-oneStar {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-third .hotels-cards-starRating-twoStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-third .hotels-cards-starRating-threeStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-third .hotels-cards-starRating-fourStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-third .hotels-cards-starRating-fiveStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+/* селекторы для управления цветом звезд четвертой карточки блока Размещения */
+.hotels-cards-fourth .hotels-cards-starRating-oneStar {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-fourth .hotels-cards-starRating-twoStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-fourth .hotels-cards-starRating-threeStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-fourth .hotels-cards-starRating-fourStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-fourth .hotels-cards-starRating-fiveStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+/* селекторы для управления цветом звезд пятой карточки блока Размещения */
+.hotels-cards-fifth .hotels-cards-starRating-oneStar {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-fifth .hotels-cards-starRating-twoStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-fifth .hotels-cards-starRating-threeStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-fifth .hotels-cards-starRating-fourStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-fifth .hotels-cards-starRating-fiveStars {
+	fill: rgba(233, 233, 233, 1);
+}
+
+/* селекторы для управления цветом звезд шестой  карточки блока Размещения */
+.hotels-cards-sixth .hotels-cards-starRating-oneStar {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-sixth .hotels-cards-starRating-twoStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-sixth .hotels-cards-starRating-threeStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-sixth .hotels-cards-starRating-fourStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-sixth .hotels-cards-starRating-fiveStars {
+	fill: rgba(233, 233, 233, 1);
+}
+
+/* селекторы для управления цветом звезд седьмой карточки блока Размещения */
+.hotels-cards-sevenh .hotels-cards-starRating-oneStar {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-sevenh .hotels-cards-starRating-twoStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-sevenh .hotels-cards-starRating-threeStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-sevenh .hotels-cards-starRating-fourStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-sevenh .hotels-cards-starRating-fiveStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+/* селекторы для управления цветом звезд восьмой карточки блока Размещения */
+.hotels-cards-eighth .hotels-cards-starRating-oneStar {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-eighth .hotels-cards-starRating-twoStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-eighth .hotels-cards-starRating-threeStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-eighth .hotels-cards-starRating-fourStars {
+	fill: rgba(240, 191, 95, 1);
+}
+
+.hotels-cards-eighth .hotels-cards-starRating-fiveStars {
+	fill: rgba(233, 233, 233, 1);
+}
+
+.hotels-cards-text-hotelName,
+.hotels-cards-text-location {
+	display: block;
+	font-size: 16px;
+	line-height: 16px;
+}
+
+.hotels-cards-text-hotelName {
+	margin-bottom: 16px;
+	color: rgba(0, 0, 0, 1);
+}
+
+.hotels-cards-text-location {
+	margin-bottom: 20px;
+	color: rgba(153, 153, 153, 1);
+}
+
+.hotels-cards-linc-LookProposal {
+	position: absolute;
+	left: 54px;
+	bottom: 27px;
+	font-size: 20px;
+	line-height: 40px;
+	font-weight: 500;
+	color: rgba(255, 255, 255, 1);
+}
+
+.hotels-cards:nth-last-child(1) {
+	position: relative;
+}
+
+/* Стилизация секции Контакты */
+.section-contacts-bloc {
+	padding: 45px;
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: 15px;
+	column-gap: 52px;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.section-contacts-card-left {
+	position: relative;
+}
+
+.section-contacts-card-right {
+	border-radius: 10px;
+	width: 653px;
+}
+
+.section-contacts-bloc-img {
+	/* почему все карктинки не имеют точного размера, имеют размер с .002px  */
+	width: 100%;
+}
+
+.list-contacts-cards {
+	flex-direction: column;
+	row-gap: 25px;
+	margin-bottom: 45px;
+}
+
+.contacts-cards {
+	border-bottom: 1px solid rgba(233, 233, 233, 1);
+	padding-bottom: 23px;
+	align-items: baseline;
+	justify-content: space-between;
+	width: 375px;
+}
+
+.contacts-cards-left-text {
+	font-size: 20px;
+	font-weight: Bold;
+	text-align: left;
+	line-height: 20px;
+	margin: 0;
+}
+
+.contacts-cards-right {
+	width: 229px;
+}
+
+.contacts-cards-right-text,
+.contacts-cards-right-tel,
+.contacts-cards-right-link,
+.contacts-cards-right-linkText {
+	font-size: 16px;
+	font-weight: normal;
+	line-height: 24px;
+}
+
+.contacts-cards-right-Color {
+	color: rgba(204, 153, 51, 1);
+}
+
+.contacts-cards-right-linkText {
+	display: inline-block;
+	color: rgba(153, 153, 153, 1);
+}
+
+
+.contacts-cards-right-tel:hover,
+.contacts-cards-right-link:hover {
+	color: rgba(240, 191, 95, 1);
+}
+
+.contacts-cards-right-tel:focus,
+.contacts-cards-right-link:focus {
+	outline: 1px solid var(--colorDefaultButton);
+}
+.contacts-cards-right-tel:active,
+.contacts-cards-right-link:active {
+	color: rgba(164, 115, 18, 1);
+	outline: none;
+}
+/* стилизация подвала */
+
+.section-footer-general {
+	background-color: rgba(51, 51, 51, 1);
+	border-radius: 15px;
+	padding: 45px;
+	position: relative;
+	z-index: 0;
+}
+
+.section-footer-imgLogo {
+	position: absolute;
+	bottom: 1px;
+	right: 177px;
+	z-index: -1;
+}
+
+/* ?как вствить изображение без указания его размеров ? */
+/* .section-footer_1-logo{
+	background-image: url(../img/logo/logo_footer.svg);
+	width: 254px;
+	height: 228px;
+	position: absolute;
+	bottom: 1px;
+	right: 177px;
+	background-repeat: no-repeat;
+	background-position: center;
+} */
+.section-footer-info {
+	justify-content: space-between;
+}
+
+.section-footer-info-left {
+	column-gap: 125px;
+	flex-wrap: wrap;
+
+}
+
+.section-footer-reference {
+	width: 302px;
+}
+
+.section-footer-contacts {
+	width: 359px;
+	row-gap: 15px;
+}
+
+.section-footer-social,
+.section-footer-contacts,
+.section-footer-reference {
+	flex-direction: column;
+}
+
+/* через отступ */
+/* .section-footer-reference-list:not(:last-child){
+	margin-bottom: 37px;
+}
+
+.section-footer-reference-list:nth-child(2){
+	margin-bottom: 40px;
+} */
+/* через flex gap */
+.section-footer-reference {
+	row-gap: 37px;
+	display: flex;
+}
+
+.section-footer-reference-list:nth-child(2) {
+	margin-bottom: 3px;
+}
+
+.section-footer-social {
+	row-gap: 20px;
+}
+
+.section-footer-reference-list,
+.section-footer-contacts-list {
+	font-size: 16px;
+	font-weight: normal;
+	color: rgba(255, 255, 255, 1);
+	line-height: 30.4px;
+}
+
+.section-footer-contacts-list {
+	line-height: 30px;
+}
+
+.section-footer-reference-listLink,
+.section-footer-contacts-listTel,
+.section-footer-contacts-listMail {
+	font-size: 16px;
+	font-weight: normal;
+	line-height: 24px;
+	color: rgba(204, 153, 51, 1);
+}
+
+.section-footer-contacts-tel,
+.section-footer-contacts-mail {
+	display: block;
+	/*огроничивает поле активности ссылки */
+	width: max-content;
+}
+
+.section-footer-contacts-tel:hover,
+.section-footer-contacts-mail:hover,
+.section-footer-reference-listLink:hover {
+	color: rgba(240, 191, 95, 1);
+}
+
+
+.section-footer-reference-link:focus,
+.section-footer-contacts-tel:focus,
+.section-footer-contacts-mail:focus {
+	outline: 1px solid var(--colorDefaultButton);
+}
+/*!Опасно, работает только с условием если актив ниже фокуса */
+.section-footer-contacts-tel:active,
+.section-footer-contacts-mail:active,
+.section-footer-reference-listLink:active>a {
+	color: rgba(164, 115, 18, 1);
+	outline: none;
+}
+
+.section-footer-social-link-icon {
+	fill: rgba(153, 153, 153, 1);
+}
+
+.section-footer-social-link-icon:hover path,
+.section-footer-social-link:focus .section-footer-social-link-icon path {
+	fill: rgba(204, 153, 51, 1);
+}
+
+.section-footer-social-link:active .section-footer-social-link-icon path {
+	fill: rgba(164, 115, 18, 1);
+}
+
+
+/*силизация Хочу тур */
+
+.container-form{
+	background-color: rgba(233, 233, 233, 1);
+	padding: 45px;
+	border-radius: 15px;
+}
+.section-title-form{
+	padding-left: 0px;
+}
+
+.section-forma{
+	background-color: white;
+	border-radius: 15px;
+	padding-left:28px;
+	padding-right:28px;
+	height: 106px;
+	justify-content: space-between;
+	align-items: center;
+	color: rgba(204, 153, 51, 1);
+}
+
+.list-form{
+	column-gap: 41px;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	}
+
+	.list-form-datalist input, .list-form-date input, .list-form-number input {
+ border: none;
+	}
+
+.list-form-datalist{
+	flex-direction: column;
+	row-gap: 15px;
+	width: 169px;
+	}
+
+.list-form-number, .list-form-date{
+	flex-direction: column;
+	row-gap: 15px;
+	width: 121px;
+}
+
+.form-text-top{
+	line-height: 12px;
+	font-size: 12px;
+	font-weight: normal;
+	color: black;
+}
+
+/* ! почему теряется этот гребаный пиксель ! */
+
+.button-joint-paddingForm{
+	padding: 13px 29px;
+	}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button{
+	opacity: 1;
+	}
+
+	input::-webkit-calendar-picker-indicator {
+		opacity: 1;
+	}
+
+.list-form-number input{
+	border-bottom: 1px solid rgba(233, 233, 233, 1);
+	}
+
+/*!для контактов ховер актив и фокус*/
+
+/*общий стиль длля стрелочек ссылки для изменения их цвета */
+.card-arrow-icon {
+	/* меняет цвет иконки в зависимости от цвета текста */
+	stroke: currentColor;
+	/* фича для svg что бы уйти от центровки черзе флекс (вертикальное выравнивание строчных элементов  */
+	vertical-align: middle;
+}
+
+/* общий стиль для кнопок  */
+.button-joint {
+	display: inline-block;
+	/* !!! */
+	font-size: 16px;
+	font-weight: normal;
+	line-height: 16px;
+	text-align: center;
+	border: 1px solid currentColor;
+	border-radius: 10px;
+	/* в макетном размере учитывается еще толщина border 13px 20px */
+	background-color: transparent;
+}
+
+.hotels-cards-text-button {
+	color: var(--colorDefaultButton);
+}
+
+.button-joint-padding {
+	padding: 12px 19px;
+}
+
+.contacts-cards-butto {
+	padding: 27px 29.5px;
+}
+
+/* Hover\Focus\Active */
+/* для личного кабинета и почты */
+.header-logo-right:hover,
+.header-logo-right:focus-within {
+	color: var(--colorSwitch);
+}
+
+/* для Спецпредложения */
+
+/* отступ границы отступа outline-offset:8px;*/
+.special-card:focus-within,
+.special-block-links-text:focus-within {
+	outline: none;
+}
+
+.special-card:focus-within::before,
+.special-block-focusBloc:focus-within::before,
+.service-cards:focus-within::before {
+	content: " ";
+	position: absolute;
+	top: -8px;
+	left: -8px;
+	right: -8px;
+	bottom: -8px;
+	border: 1px solid rgba(204, 153, 51, 1);
+}
+
+.special-block-focusBloc {
+	position: relative;
+}
+
+.special-card:active::before,
+.special-block-focusBloc:active::before {
+	display: none;
+}
+
+/* для Услуги */
+.service-cards-active:hover {
+	color: rgba(240, 191, 95, 1);
+}
+
+.service-cards:focus-within {
+	outline: none;
+}
+:hover{
+	transition: color 0.5s 0.1s;
+}
+.service-cards {
+	position: relative;
+}
+
+.service-cards:active::before {
+	display: none;
+}
+
+.service-cards-active:active,
+.service-cards:active {
+	color: rgba(164, 115, 18, 1);
+	outline: none;
+}
+
+.special-block-links-text:active {
+	color: white;
+}
+
+/* :focus-within позволяет при фокусе (Tab) выдулить элемент и его родителя */
+.header-logo-right:focus-within {
+	outline: 1px solid var(--colorDefaultButton);
+}
+
+/* .header-logo-right:focus c свойством outline:none; отменяет действие :focus на ллемент в HTML onclick="this.blur() позволяет програмно снять фокус с элемента*/
+.header-logo-right:active {
+	color: var(--colorAktivButtonNacTel);
+	outline: none;
+}
+
+/* меняем цвет svg  */
+.svg-icon {
+	fill: currentColor;
+}
+
+/* для телефона и навигации */
+.header-top-telephone:hover,
+.header-item>a:hover,
+.header-top-telephone:focus,
+.header-item>a:focus {
+	color: var(--colorDefaultButton);
+	/* плавное изменение в (течении 0.5) цвета с задерржкой 0.1 */
+	/* !Сергей! */
+	transition: color 0.5s 0.1s;
+}
+ /*!!накой это нужно !!*/
+.header-top-telephone:focus,
+.header-item>a:focus {
+	outline: 1px solid var(--colorDefaultButton);
+}
+
+.header-top-telephone:active,
+.header-item>a:active {
+	color: var(--colorAktivButtonNacTel);
+	outline: none;
+}
+
+/* для кнопок */
+.button-joint:hover,
+.button-joint:focus {
+	color: var(--colorTextSubstrate);
+	background-color: var(--colorDefaultButton);
+	transition: color 0.5s 0.1s;
+}
+
+.button-joint:active {
+	color: var(--colorTextSubstrate);
+	background-color: var(--colorAktivButtonNacTel);
+}
+
+/*
+!font-weight:
+*100: Thin;
+*200: Extra Light (Ultra Light);
+*300: Light;
+*400: Normal;
+*500: Medium;
+*600: Semi Bold (Demi Bold);
+*700: Bold;
+*800: Extra Bold (Ultra Bold);
+*900: Black (Heavy).
+*/
