@@ -61,7 +61,7 @@ body {
 	max-width: 100%;
 }
 
-/*сброс стилей ссылки посещеных и нетё */
+/*сброс стилей ссылки посещеных */
 a:link,
 a:visited {
 	text-decoration: inherit;
